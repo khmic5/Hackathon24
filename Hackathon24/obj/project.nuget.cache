@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "u+848VHOn4Q=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\weitzuhsu\\source\\repos\\Hackathon24\\Hackathon24\\Hackathon24.csproj",
+  "expectedPackageFiles": [
+    "C:\\.tools\\.nuget\\packages\\microsoft.aspnetcore.odata\\9.0.0\\microsoft.aspnetcore.odata.9.0.0.nupkg.sha512",
+    "C:\\.tools\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
+    "C:\\.tools\\.nuget\\packages\\microsoft.extensions.objectpool\\6.0.3\\microsoft.extensions.objectpool.6.0.3.nupkg.sha512",
+    "C:\\.tools\\.nuget\\packages\\microsoft.odata.core\\8.0.1\\microsoft.odata.core.8.0.1.nupkg.sha512",
+    "C:\\.tools\\.nuget\\packages\\microsoft.odata.edm\\8.0.1\\microsoft.odata.edm.8.0.1.nupkg.sha512",
+    "C:\\.tools\\.nuget\\packages\\microsoft.odata.modelbuilder\\2.0.0\\microsoft.odata.modelbuilder.2.0.0.nupkg.sha512",
+    "C:\\.tools\\.nuget\\packages\\microsoft.spatial\\8.0.1\\microsoft.spatial.8.0.1.nupkg.sha512",
+    "C:\\.tools\\.nuget\\packages\\system.componentmodel.annotations\\4.6.0\\system.componentmodel.annotations.4.6.0.nupkg.sha512",
+    "C:\\.tools\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
+    "C:\\.tools\\.nuget\\packages\\system.text.encodings.web\\4.7.2\\system.text.encodings.web.4.7.2.nupkg.sha512",
+    "C:\\.tools\\.nuget\\packages\\system.text.json\\4.6.0\\system.text.json.4.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}

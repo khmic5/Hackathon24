@@ -1,0 +1,125 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\weitzuhsu\\source\\repos\\Hackathon24\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DD26B968-406B-465D-AC66-1A47E6E3AD16}|Hackathon24\\Hackathon24.csproj|c:\\users\\weitzuhsu\\source\\repos\\hackathon24\\hackathon24\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD26B968-406B-465D-AC66-1A47E6E3AD16}|Hackathon24\\Hackathon24.csproj|solutionrelative:hackathon24\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD26B968-406B-465D-AC66-1A47E6E3AD16}|Hackathon24\\Hackathon24.csproj|c:\\users\\weitzuhsu\\source\\repos\\hackathon24\\hackathon24\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD26B968-406B-465D-AC66-1A47E6E3AD16}|Hackathon24\\Hackathon24.csproj|solutionrelative:hackathon24\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD26B968-406B-465D-AC66-1A47E6E3AD16}|Hackathon24\\Hackathon24.csproj|c:\\users\\weitzuhsu\\source\\repos\\hackathon24\\hackathon24\\hackathon24.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{DD26B968-406B-465D-AC66-1A47E6E3AD16}|Hackathon24\\Hackathon24.csproj|solutionrelative:hackathon24\\hackathon24.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD26B968-406B-465D-AC66-1A47E6E3AD16}|Hackathon24\\Hackathon24.csproj|c:\\users\\weitzuhsu\\source\\repos\\hackathon24\\hackathon24\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD26B968-406B-465D-AC66-1A47E6E3AD16}|Hackathon24\\Hackathon24.csproj|solutionrelative:hackathon24\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD26B968-406B-465D-AC66-1A47E6E3AD16}|Hackathon24\\Hackathon24.csproj|c:\\users\\weitzuhsu\\source\\repos\\hackathon24\\hackathon24\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD26B968-406B-465D-AC66-1A47E6E3AD16}|Hackathon24\\Hackathon24.csproj|solutionrelative:hackathon24\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\weitzuhsu\\source\\repos\\Hackathon24\\Hackathon24\\Program.cs",
+              "RelativeDocumentMoniker": "Hackathon24\\Program.cs",
+              "ToolTip": "C:\\Users\\weitzuhsu\\source\\repos\\Hackathon24\\Hackathon24\\Program.cs",
+              "RelativeToolTip": "Hackathon24\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T16:25:55.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CustomersController.cs",
+              "DocumentMoniker": "C:\\Users\\weitzuhsu\\source\\repos\\Hackathon24\\Hackathon24\\Controllers\\CustomersController.cs",
+              "RelativeDocumentMoniker": "Hackathon24\\Controllers\\CustomersController.cs",
+              "ToolTip": "C:\\Users\\weitzuhsu\\source\\repos\\Hackathon24\\Hackathon24\\Controllers\\CustomersController.cs",
+              "RelativeToolTip": "Hackathon24\\Controllers\\CustomersController.cs",
+              "ViewState": "AgIAABEAAABAAAAAAIAYwAcAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T16:24:55.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Hackathon24",
+              "DocumentMoniker": "C:\\Users\\weitzuhsu\\source\\repos\\Hackathon24\\Hackathon24\\Hackathon24.csproj",
+              "RelativeDocumentMoniker": "Hackathon24\\Hackathon24.csproj",
+              "ToolTip": "C:\\Users\\weitzuhsu\\source\\repos\\Hackathon24\\Hackathon24\\Hackathon24.csproj",
+              "RelativeToolTip": "Hackathon24\\Hackathon24.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-18T16:24:11.297Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "C:\\Users\\weitzuhsu\\source\\repos\\Hackathon24\\Hackathon24\\Models\\Customer.cs",
+              "RelativeDocumentMoniker": "Hackathon24\\Models\\Customer.cs",
+              "ToolTip": "C:\\Users\\weitzuhsu\\source\\repos\\Hackathon24\\Hackathon24\\Models\\Customer.cs",
+              "RelativeToolTip": "Hackathon24\\Models\\Customer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T16:23:29.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\weitzuhsu\\source\\repos\\Hackathon24\\Hackathon24\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Hackathon24\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\weitzuhsu\\source\\repos\\Hackathon24\\Hackathon24\\Models\\Order.cs",
+              "RelativeToolTip": "Hackathon24\\Models\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T16:22:51.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
