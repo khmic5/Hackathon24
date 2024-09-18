@@ -6,6 +6,7 @@ namespace Hackathon24.Controllers
     using System.Collections.Generic;
     using System.Linq;
     using Hackathon24.Models;
+    using Hackathon24.CustomFilters;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.OData.Query;
     using Microsoft.AspNetCore.OData.Routing.Controllers;
@@ -18,6 +19,7 @@ namespace Hackathon24.Controllers
             {
                 Id = idx,
                 Name = $"Customer {idx}",
+                ScopeTags = new List<string> { "1", "2", "3", "4" },
                 Orders = new List<Order>(
                     Enumerable.Range(1, 2).Select(dx => new Order
                     {
@@ -27,12 +29,14 @@ namespace Hackathon24.Controllers
             }));
 
         [EnableQuery]
+        [ScopeTagActionFilter]
         public ActionResult<IEnumerable<Customer>> Get()
         {
             return Ok(customers);
         }
 
         [EnableQuery]
+        [ScopeTagActionFilter]
         public ActionResult<Customer> Get([FromRoute] int key)
         {
             var item = customers.SingleOrDefault(d => d.Id.Equals(key));

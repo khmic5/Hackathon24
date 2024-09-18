@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public List<string> ScopeTags { get; set; }
         public List<Order> Orders { get; set; }
     }
 }
