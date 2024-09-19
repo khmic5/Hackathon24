@@ -1,4 +1,4 @@
-﻿using Hackathon24.Controllers;
+﻿  using Hackathon24.Controllers;
 using Hackathon24.FilterAttributes;
 using Hackathon24.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -16,19 +16,31 @@ namespace Hackathon24.FilterAttributes
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
     public sealed class AuthorizeUserForAttribute : Attribute, IAsyncAuthorizationFilter
     {
-        private readonly string requiredScopeTag;
+        private readonly string requiredScopeTags;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorizeUserForAttribute"/> class.
         /// </summary>
         /// <param name="requiredScopeTag">The required scope tag to access the resource.</param>
-        public AuthorizeUserForAttribute(string requiredScopeTag)
+        public AuthorizeUserForAttribute(string requiredScopeTags)
         {
-            this.requiredScopeTag = requiredScopeTag;
+            //  Join the required scope tags into a single string
+            this.requiredScopeTags = requiredScopeTags;
         }
 
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
+            //  Add the configured scope tags to the "ScopeTags" claim of the DemoUser Identity
+            if (context.HttpContext.User != null && context.HttpContext.User.Identities != null)
+            {
+                // linq to get DemoUser idenity from User.Identities
+                var demoUserIdentity = context.HttpContext.User.Identities.FirstOrDefault(i => i.Name == "DemoUser");
+                if (demoUserIdentity != null)
+                {
+                    demoUserIdentity.AddClaim(new System.Security.Claims.Claim("ScopeTags", this.requiredScopeTags));
+                }
+            }
+            /*
             // Use reflection to access the private static 'customers' field in CustomersController
             var customersField = typeof(CustomersController)
                 .GetField("customers", BindingFlags.NonPublic | BindingFlags.Static);
@@ -71,7 +83,7 @@ namespace Hackathon24.FilterAttributes
                     return;
                 }
             }
-
+            */
             // Customer is authorized, proceed with the request
             await Task.CompletedTask;
         }
