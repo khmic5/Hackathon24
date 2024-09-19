@@ -29,38 +29,47 @@ namespace Hackathon24.FilterAttributes
 
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
-            var customersField = typeof(Hackathon24.Controllers.CustomersController)
+            // Use reflection to access the private static 'customers' field in CustomersController
+            var customersField = typeof(CustomersController)
                 .GetField("customers", BindingFlags.NonPublic | BindingFlags.Static);
 
             var customers = (List<Customer>)customersField.GetValue(null);
 
-            // Get the customer ID from the route data (from the URL)
-            if (!context.RouteData.Values.TryGetValue("key", out var keyValue))
+            // Check if a specific customer ID is provided (for requests like GET /odata/customers/{id})
+            if (context.RouteData.Values.TryGetValue("key", out var keyValue))
             {
-                context.Result = new BadRequestObjectResult("Customer ID not found in route.");
-                return;
+                // If a customer ID is found in the route
+                if (!int.TryParse(keyValue.ToString(), out int customerId))
+                {
+                    context.Result = new BadRequestObjectResult("Invalid customer ID.");
+                    return;
+                }
+
+                // Find the customer in the static list
+                var customer = customers.SingleOrDefault(c => c.Id == customerId);
+
+                if (customer == null)
+                {
+                    context.Result = new UnauthorizedResult();
+                    return;
+                }
+
+                // Check if the customer has the required scope tag
+                if (!customer.ScopeTags.Contains(this.requiredScopeTag))
+                {
+                    context.Result = new ForbidResult();
+                    return;
+                }
             }
-
-            if (!int.TryParse(keyValue.ToString(), out int customerId))
+            else
             {
-                context.Result = new BadRequestObjectResult("Invalid customer ID.");
-                return;
-            }
-
-            // Find the customer in the static list
-            var customer = customers.SingleOrDefault(c => c.Id == customerId);
-
-            if (customer == null)
-            {
-                context.Result = new UnauthorizedResult();
-                return;
-            }
-
-            // Check if the customer has the required scope tag
-            if (!customer.ScopeTags.Contains(this.requiredScopeTag))
-            {
-                context.Result = new ForbidResult();
-                return;
+                // If no customer ID is provided (like in GET /odata/customers)
+                // Check if any customer in the static list matches the required scope tag
+                if (!customers.Any(c => c.ScopeTags.Contains(this.requiredScopeTag)))
+                {
+                    context.Result = new ForbidResult();
+                    return;
+                }
             }
 
             // Customer is authorized, proceed with the request

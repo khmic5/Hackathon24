@@ -10,6 +10,7 @@ namespace Hackathon24.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.OData.Query;
     using Microsoft.AspNetCore.OData.Routing.Controllers;
+    using Hackathon24.FilterAttributes;
 
     public class CustomersController : ODataController
     {
@@ -30,6 +31,7 @@ namespace Hackathon24.Controllers
 
         [EnableQuery]
         [ScopeTagActionFilter]
+        [AuthorizeUserFor("1")] // Only customers with ScopeTag "1" can access this
         public ActionResult<IEnumerable<Customer>> Get()
         {
             return Ok(customers);
@@ -37,6 +39,7 @@ namespace Hackathon24.Controllers
 
         [EnableQuery]
         [ScopeTagActionFilter]
+        [AuthorizeUserFor("2")] // Only customers with ScopeTag "2" can access this
         public ActionResult<Customer> Get([FromRoute] int key)
         {
             var item = customers.SingleOrDefault(d => d.Id.Equals(key));

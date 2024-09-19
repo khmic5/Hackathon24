@@ -1,8 +1,13 @@
 using Hackathon24.Models;
 using Microsoft.AspNetCore.OData;
 using Microsoft.OData.ModelBuilder;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add a dummy authentication handler (no-op)
+builder.Services.AddAuthentication("NoAuthScheme")
+    .AddScheme<AuthenticationSchemeOptions, Hackathon24.NoOpAuthenticationHandler>("NoAuthScheme", options => { });
 
 var modelBuilder = new ODataConventionModelBuilder();
 modelBuilder.EntityType<Order>();
@@ -16,6 +21,10 @@ builder.Services.AddControllers().AddOData(
 var app = builder.Build();
 
 app.UseRouting();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.UseEndpoints(endpoints => endpoints.MapControllers());
 
