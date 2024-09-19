@@ -32,7 +32,7 @@ namespace Hackathon24.Controllers
 
         [EnableQuery]
         [AuthorizeUserFor("1;2")] // Only customers with ScopeTag "1" can access this
-        //  [ScopeTagActionFilter(typeof(Customer), "ScopeTags")]
+        [ScopeTagActionFilter<Customer>("ScopeTags")]
         public ActionResult<IEnumerable<Customer>> Get()
         {
             var customersToReturn = customers.Select(c => (Customer)c.Clone()).ToList();
@@ -49,7 +49,7 @@ namespace Hackathon24.Controllers
 
         [EnableQuery]
         [AuthorizeUserFor("3;4")] // Only customers with ScopeTag "2" can access this
-        //  [ScopeTagActionFilter(typeof(Customer), "ScopeTags")]
+        [ScopeTagActionFilter<Customer>("ScopeTags")]
         public ActionResult<Customer> Get([FromRoute] int key)
         {
             var item = customers.SingleOrDefault(d => d.Id.Equals(key));

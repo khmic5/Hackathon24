@@ -10,17 +10,14 @@ using System.Collections;
 
 namespace Hackathon24.CustomFilters
 {
-    public class ScopeTagActionFilter : ActionFilterAttribute
+    public class ScopeTagActionFilter<T> : ActionFilterAttribute where T : class
     {
-        private readonly Type? _type;
         private readonly PropertyInfo? _scopeTagsPropertyInfo;
 
-        public ScopeTagActionFilter(Type type, string scopeTagsPropertyName)
+        public ScopeTagActionFilter(string scopeTagsPropertyName)
         {
-            _type = type;
-            PropertyInfo? propertyInfo = type.GetProperty(scopeTagsPropertyName);
-            _scopeTagsPropertyInfo = propertyInfo;
-        }   
+            _scopeTagsPropertyInfo = typeof(T).GetProperty(scopeTagsPropertyName);
+        }
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
@@ -30,8 +27,8 @@ namespace Hackathon24.CustomFilters
 
         public override void OnActionExecuted(ActionExecutedContext context)
         {
-            //  If _type or _scopeTagsPropertyInfo is null, return
-            if (_type == null || _scopeTagsPropertyInfo == null)
+            //  If _scopeTagsPropertyInfo is null, return
+            if (_scopeTagsPropertyInfo == null)
             {
                 base.OnActionExecuted(context);
                 return;
@@ -41,7 +38,7 @@ namespace Hackathon24.CustomFilters
             //  Filter Scope Tags for each entity
             if (context.Result is Microsoft.AspNetCore.Mvc.ObjectResult objectResult)
             {
-                if (objectResult.Value != null && objectResult.Value.GetType() == _type)
+                if (objectResult.Value != null && objectResult.Value.GetType() == typeof(T))
                 {
                     var entityWithScopeTags = objectResult.Value;
                     var existingTags = _scopeTagsPropertyInfo.GetValue(entityWithScopeTags) as List<string>;
@@ -51,7 +48,7 @@ namespace Hackathon24.CustomFilters
                         _scopeTagsPropertyInfo.SetValue(entityWithScopeTags, filteredTags);
                     }
                 }
-                else if (objectResult.Value != null && IsEnumerableOfType(objectResult.Value, _type))
+                else if (objectResult.Value != null && IsEnumerableOfType(objectResult.Value, typeof(T)))
                 {
                     IEnumerable enumerable = (IEnumerable)objectResult.Value;
                     foreach (var item in enumerable)
@@ -68,6 +65,7 @@ namespace Hackathon24.CustomFilters
 
             base.OnActionExecuted(context);
         }
+
         private bool IsEnumerableOfType(object obj, Type type)
         {
             if (obj == null) return false;
