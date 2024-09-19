@@ -11,6 +11,7 @@ namespace Hackathon24.Controllers
     using Microsoft.AspNetCore.OData.Query;
     using Microsoft.AspNetCore.OData.Routing.Controllers;
     using Hackathon24.FilterAttributes;
+    using Hackathon24.Helpers;
 
     public class CustomersController : ODataController
     {
@@ -31,6 +32,7 @@ namespace Hackathon24.Controllers
 
         [EnableQuery]
         [AuthorizeUserFor("1;2")] // Only customers with ScopeTag "1" can access this
+        //  [ScopeTagActionFilter(typeof(Customer), "ScopeTags")]
         public ActionResult<IEnumerable<Customer>> Get()
         {
             var customersToReturn = customers.Select(c => (Customer)c.Clone()).ToList();
@@ -38,7 +40,7 @@ namespace Hackathon24.Controllers
             //  Process and fitler scope tags for each customer object
             foreach (var customer in customersToReturn)
             {
-                var intersectingScopeTags = GetIntersectingScopeTags(customer, this.HttpContext);
+                var intersectingScopeTags = ScopeTagHelpers.GetIntersectingScopeTags(customer.ScopeTags, this.HttpContext);
                 customer.ScopeTags = intersectingScopeTags;
             }
 
@@ -47,6 +49,7 @@ namespace Hackathon24.Controllers
 
         [EnableQuery]
         [AuthorizeUserFor("3;4")] // Only customers with ScopeTag "2" can access this
+        //  [ScopeTagActionFilter(typeof(Customer), "ScopeTags")]
         public ActionResult<Customer> Get([FromRoute] int key)
         {
             var item = customers.SingleOrDefault(d => d.Id.Equals(key));
@@ -58,28 +61,10 @@ namespace Hackathon24.Controllers
 
             //  Process and fitler scope tags
             var itemToReturn = (Customer)item.Clone();
-            var intersectingScopeTags = GetIntersectingScopeTags(itemToReturn, this.HttpContext);
+            var intersectingScopeTags = ScopeTagHelpers.GetIntersectingScopeTags(itemToReturn.ScopeTags, this.HttpContext);
             itemToReturn.ScopeTags = intersectingScopeTags;
 
             return Ok(itemToReturn);
-        }
-
-        //  Simulates getting scope tags for the User
-        private List<string>? GetUserScopeTags(HttpContext context)
-        {
-            var scopeTags = context.User.Claims.FirstOrDefault(c => c.Type == "ScopeTags")?.Value;
-            return scopeTags?.Split(';').ToList();
-        }
-
-        // Returns list of scope tags that intersect the scope tags on customer object and the user
-        private List<string> GetIntersectingScopeTags(Customer customer, HttpContext context)
-        {
-            var userScopeTags = GetUserScopeTags(context);
-            if (userScopeTags == null)
-            {
-                return new List<string>();
-            }
-            return customer.ScopeTags.Intersect(userScopeTags).ToList();
         }
     }
 }
